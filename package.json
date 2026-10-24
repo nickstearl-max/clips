@@ -1,0 +1,55 @@
+{
+  "name": "clips-app",
+  "productName": "Clips",
+  "version": "1.0.0",
+  "description": "An iPhone Photos-style gallery for your game clips and screenshots",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0"
+  },
+  "author": "nickstearl-max",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickstearl-max/clips.git"
+  },
+  "homepage": "https://github.com/nickstearl-max/clips",
+  "build": {
+    "appId": "com.clips.album",
+    "productName": "Clips",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "Clips-${version}-portable.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Clips",
+      "runAfterFinish": true,
+      "artifactName": "Clips-Setup-${version}.${ext}"
+    }
+  }
+}
